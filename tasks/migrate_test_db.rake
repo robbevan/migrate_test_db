@@ -30,7 +30,7 @@ namespace :db do
         # VIEWS or STORED PROCEDURES are present.
         Rake::Task["db:test:purge"].invoke
         ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['test'])
-        # ActiveRecord::Schema.verbose = false
+        ActiveRecord::Schema.verbose = false
         ENV['VERBOSE'] = "false" # Rails resets ActiveRecord::Schema.verbose with value of ENV['VERBOSE'] defaulting to true
         Rake::Task["db:migrate"].invoke
       else # This could also default to :ruby... DHH thoughts on this?
